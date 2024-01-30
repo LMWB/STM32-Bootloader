@@ -11,3 +11,6 @@ todo
 
 ## Firmware-Update OTA
 Firmware Update over the air combines all the features discused so far. The binaries have to be transmitted throught e.g. wifi and stored in the flash. After, the device has to force reboot and bootloader does its job.
+
+### Git Commands
+test commit from local git account with local (not gloable) account details
