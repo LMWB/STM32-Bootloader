@@ -10,4 +10,4 @@ How to write code to read and write an external Flash connected via SPI (later f
 todo
 
 ## Firmware-Update OTA
-Firmware Update over the air combines all the features discused so far. The binaries have to be transmitted throught e.g. wifi and stored the the flash. After, the device has to force reboot and bootloader does its job.
+Firmware Update over the air combines all the features discused so far. The binaries have to be transmitted throught e.g. wifi and stored in the flash. After, the device has to force reboot and bootloader does its job.
