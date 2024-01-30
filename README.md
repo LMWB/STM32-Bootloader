@@ -16,6 +16,7 @@ Firmware Update over the air combines all the features discused so far. The bina
 test commit from local git account with local (not gloable) account details
 
 [how to use multiple git accounts](https://www.howtogeek.com/devops/how-to-manage-multiple-git-accounts-on-one-system/)
+
 [how to show git config](https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-configuration)
 
 Regular workflow using command line tool
