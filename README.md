@@ -19,10 +19,27 @@ test commit from local git account with local (not gloable) account details
 [how to show git config](https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-configuration)
 
 Regular workflow using command line tool
+
 `git add .`
+
 `git commit -m "whats new - my notes on this commit"`
+
 `git push`
 
 Show basic informations
+
 `git status`
+
 `gitk`
+
+Merge branches
+
+`git checkout destination-branch`
+
+`git pull`
+
+`git merge branch-that-has-newes-features`
+
+`git push`
+
+`git checkout back-to-working-branch`
