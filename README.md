@@ -26,7 +26,7 @@ My very first attempt on Bootloader. Its basically straight forward to what Vikt
 - App1
 - App2
 
-All three projects have to be build on its own and flashed to the MCU. Study the xxx_flash.ld file which gives Info on where the code will be placed on the internal flah. After Reset the Bootloader prints info on the terminal on UART2 (Nucleo USB). Make a selection on which partition to boot from and press blue button.
+All three projects have to be build on its own and flashed to the MCU. Study the xxx_flash.ld file which gives Info on where the code will be placed on the internal flash. After Reset (Black Nucleo Button) the Bootloader prints info on the terminal on UART2 (Nucleo USB). Make a selection on which partition to boot from and press the Blue button.
 
 Pin PC0 (Nucleo A5) and Pin PC1 (Nucleo A4) are configured as GPIO Input with Pull Down. Use a Jumper Wire to simulate switches for these two pins. The bootloader will loop until one presses the blue button (Nucleo B1). According to state of switches the bootloader decides where to jump to. TIM6 is not used it is initialized just for demo to make sure it is working on Application after bootloader finished its execution. On application Project, the Interrupt Vector Table has to be configured in system_stm32f4xx.c at line 94 and 108. Vector Table Offset must match Linker file!
 
