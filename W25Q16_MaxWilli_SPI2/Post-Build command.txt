@@ -1,0 +1,5 @@
+on Windows
+cmd.exe /C copy /Y "${BuildArtifactFileBaseName}.elf" "..\${BuildArtifactFileBaseName}.stldr"
+
+on Linux
+cp "${BuildArtifactFileBaseName}.elf" "../${BuildArtifactFileBaseName}.stldr"
