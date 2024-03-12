@@ -18,6 +18,11 @@
  *      On application Project, the Interrupt Vector Table has to be configured in system_stm32f4xx.c at line 94 and 108.
  *      Vector Table Offset must match Linker file!
  *
+ *      Partitions are parted like this
+ *      Bootloader 	size 32k start address 0x8000000
+ *      App1 		size 32k start address 0x8008000
+ *      App2 		size 32k start address 0x8010000
+ *
  *
  */
 #include <string.h>
@@ -28,6 +33,8 @@
 
 static uint8_t partition = 0;
 volatile uint8_t bootSelection = 0;
+#define UART_DMA_RX_SIZE 1024
+static uint8_t UART_DMA_RX_BUFFER[UART_DMA_RX_SIZE];
 
 void bl_deinitEverything() {
 	//-- reset peripherals to guarantee flawless start of user application
@@ -35,6 +42,7 @@ void bl_deinitEverything() {
 	HAL_GPIO_DeInit(B1_GPIO_Port, B1_Pin);
 
 	HAL_UART_MspDeInit(&huart2);
+	HAL_UART_MspDeInit(&huart4);
 	HAL_TIM_Base_MspDeInit(&htim6);
 
 	__HAL_RCC_GPIOC_CLK_DISABLE();
@@ -64,6 +72,8 @@ void bl_jumpToApplication(const uint32_t address)
 
 void bl_main(void)
 {
+	HAL_UARTEx_ReceiveToIdle_DMA( &huart4, UART_DMA_RX_BUFFER, UART_DMA_RX_SIZE);
+
 	char msg[128] = {};
 	uint16_t msgSize = 0;
 	msgSize = sprintf(msg, "Booting ...");
@@ -104,5 +114,24 @@ void bl_main(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if( GPIO_Pin == B1_Pin ){
 		bootSelection = 1;
+	}
+}
+
+void HAL_UARTEx_RxEventCallback( UART_HandleTypeDef *huart, uint16_t Size ) {
+	char buf[32];
+	uint8_t l = 0;
+	/* This Data Receiving from bin-file parser */
+	if ( huart->Instance == UART4 ) {
+		// Save RX Data
+
+		// Echo Data To CuteCom Terminal
+		l = sprintf(buf, "Binfile RX -> Target Size %d\n", Size);
+
+		HAL_UART_Transmit( &huart2, (uint8_t*) buf, l, 10 );
+		//HAL_UART_Transmit( &huart2, UART_DMA_RX_BUFFER, Size, 10 );
+		HAL_UART_Transmit( &huart2, (uint8_t*) "\n", 1, 10 );
+
+		// activate RX DAM Interrupt again
+		HAL_UARTEx_ReceiveToIdle_DMA( &huart4, UART_DMA_RX_BUFFER, UART_DMA_RX_SIZE);
 	}
 }

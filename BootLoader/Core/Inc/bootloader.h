@@ -11,8 +11,8 @@
 #include "main.h"
 #include "bootloader.h"
 
-#define APP1_START (0x08005000)			//Origin + Bootloader size (20kB)
-#define APP2_START (0x0800A800)			//Origin + Bootloader size (20kB) + App1 Bank (22kB)
+#define APP1_START (0x08008000)			//Origin + Bootloader size (32kB)
+#define APP2_START (0x08010000)			//Origin + Bootloader size (32kB) + App1 Bank (32kB)
 
 typedef void (application_t)(void);
 
