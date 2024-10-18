@@ -6,7 +6,7 @@ This is my own little wiki on how to build a custom Bootloader for STM32 F446 Se
 ## External Loader
 How to write code to read and write an external Flash connected via SPI (later for advanced speed with Quad-SPI in single dual or quad mode). The ext. flash is supposed to store new firmware which the bootloader has to load to internal flash. There is a possibility to map external flash to STM32's internal flash address space. Maybe this could become handy. Refer to reference manual section 12.1 "memory-mapped mode: the external Flash memory is mapped to the device address space and is seen by the system as if it was an internal memory".
 
-[Mauro De Vecchi - External loaders for Standard SPI flash memories YouTube](https://www.youtube.com/watch?v=KlG2doCkREM)
+[Mauro De Vecchi - External loaders for Standard SPI flash memories YouTube](https://www.youtube.com/watch?v=KlG2doCkREM)  
 [Mauro De Vecchi - External loaders for Standard SPI flash memories GitHub](https://github.com/maudeve-it/W25Qxxx_SPI_FLASH_STM32/tree/main)
 
 [ControllersTech - W25Q FLASH Memory Part 8 How to create an External Loader](https://www.youtube.com/watch?v=WJIzwxiXmOM)
