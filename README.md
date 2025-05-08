@@ -85,4 +85,9 @@ Merge branches
 
 Undo changes
 
-`git restore`
+`git restore`  
+`git stash`  
+
+Delete local branches (after pull request and merge on github)  
+`git branch -d <branch_name>`  
+`git branch -D <local-branch>` /* This will force deletion of the branch, even if it contains unmerged / unpushed commits. It goes without saying: please be careful with this command!*/  
